@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}游戏界面{% endblock %}</h1>
+  <style>
+    .clicked-background{
+      background-color: red;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+    <body>
+        <div class="container">
+            <div class="row">
+                {% for num_index in range(2) %}
+                    <button class="button-nums" id="button{{ num_index }}" name="button" value="{{ num_index }}" >{{ session['nums'][num_index] }}</button>
+                {% endfor %}
+            </div>
+            <div class="row">
+              {% for num_index in range(2) %}
+                  <button class="button-nums" id="button{{ num_index +2}}" name="button" value="{{ num_index + 2 }}" >{{ session['nums'][num_index + 2] }}</button>
+              {% endfor %}
+            </div>
+            <div class="row">
+                {% for signal_index in range(2) %}
+                    <button id="button{{ signal_index + 4 }}" class="button" name="button" value="{{ signal_index + 4 }}">{{ session['signal'][signal_index]}}</button>
+                {% endfor %}
+                <button id="button{{ 2 + 4 }}" class="button" name="button" value="{{ 2 + 4 }}">&times;</button>
+                <button id="button{{ 3 + 4 }}" class="button" name="button" value="{{ 3 + 4 }}">&divide;</button>
+                <button id="button{{ 4 + 4 }}" class="button" name="button" value="{{ 4 + 4 }}">&#8634;</button>
+                <button id="button{{ 5 + 4 }}" class="button" name="button" value="{{ 5 + 4 }}">&#8594;</button>
+
+            </div>    
+        </div>
+
+        <script>
+          $(document).ready(function() {
+            console.log('ready');
+            // 按钮事件处理
+            $('.button , .button-nums').click(function() {
+              var clickbutton = $(this);
+              var buttonvalue = parseInt(clickbutton.val());
+              console.log({buttonvalue:buttonvalue});
+              
+              // 发送异步POST请求给服务器
+              $.ajax({
+                url: '/game',
+                method: 'POST',
+                data: {buttonvalue: buttonvalue},
+                success: function(response) {
+                  // 根据返回的nums重新构造button
+                  var nums = response.nums;
+                  var clicked_index = response.selectedposition;
+                  console.log(nums);
+                  console.log(clicked_index);
+
+                  for (var i = 0; i < nums.length; i++){
+                      var T = 1;
+                      // 获得num button
+                      var element = $("#button" + i);
+                      //  隐藏
+                      if(nums[i] == null){
+                          element.removeClass('clicked-button');
+                          element.addClass( "invisible-button");
+                          element.prop("disabled", true);
+                      }
+                      else{
+                          // 已经点击
+                          for (var cindex = 0; cindex < clicked_index.length; cindex++){
+                              if(i == clicked_index[cindex]){
+                                element.addClass("clicked-button");
+                                console.log(element);
+                                element.prop("disabled", true);
+                                T = 0;
+                                break;
+                              }}
+                          // 可点击
+                          if(T == 1){
+                              element.removeClass('clicked-button');
+                              element.removeClass('invisible-button');
+                              element.addClass('visiable-button');
+                              element.prop("disabled", false);
+                              element.text(nums[i].toString());                            
+                          }
+                  }}
+
+                  // 符号的class
+                  for (var i = 0; i < 6; i++){
+                    // 获得element
+                      var element = $("#button" + (i + 4));
+                      var T = 1; //表示可以点击
+                      // 点击过的
+                      for (var cindex = 0; cindex < clicked_index.length; cindex++){
+                              if(i+4 == clicked_index[cindex]){
+                                element.addClass("clicked-button");
+                                console.log(element);
+                                element.prop("disabled", true);
+                                T = 0;
+                                break;
+                              }}  
+                      if(T == 1){
+                          element.removeClass('clicked-button');   
+                          element.prop("disabled", false);   
+                      }                    
+                  }},
+
+            
+                error: function() {
+                  console.log("err")
+                }
+              });
+            });
+          });
+        
+        </script>
+      <div class="container">
+        
+        <div class="row">
+          <a href="/end">
+            <button class="end-button">End</button>
+        </a>
+        </div>
+
+      </div>
+        
+    </body>
+{% endblock %}
+
+
+

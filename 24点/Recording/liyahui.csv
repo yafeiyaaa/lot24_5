@@ -1,0 +1,47 @@
+,block_index,trial_index,trial_index_in_block,input,mah,action,events,trial_start,trial_end
+0,1,0,1,"[Fraction(4, 1), Fraction(7, 1), Fraction(12, 1), Fraction(12, 1)]",0,"['4', '*', '7', '28', '-', '12']","              events                 event_time position        value                  nums result_stack              expression_stack
+0        Trial_start 2023-10-07 14:56:15.550330      NaN  Trial_start        [4, 7, 12, 12]           []                [4, 7, 12, 12]
+1     selectedNumber 2023-10-07 14:56:19.371245        0            4        [4, 7, 12, 12]          [4]                [4, 7, 12, 12]
+2   selectedOperator 2023-10-07 14:56:19.759906        6            *        [4, 7, 12, 12]       [4, *]                [4, 7, 12, 12]
+3     selectedNumber 2023-10-07 14:56:21.592041        1            7        [4, 7, 12, 12]    [4, *, 7]                [4, 7, 12, 12]
+4          calculate 2023-10-07 14:56:21.609459      NaN    calculate    [None, 28, 12, 12]           []         [None, (4*7), 12, 12]
+5     selectedNumber 2023-10-07 14:56:25.736363        1           28    [None, 28, 12, 12]         [28]         [None, (4*7), 12, 12]
+6     selectedNumber 2023-10-07 14:56:26.976745        2           12    [None, 28, 12, 12]         [12]         [None, (4*7), 12, 12]
+7     selectedNumber 2023-10-07 14:56:28.977513        1           28    [None, 28, 12, 12]         [28]         [None, (4*7), 12, 12]
+8   selectedOperator 2023-10-07 14:56:29.736594        5            -    [None, 28, 12, 12]      [28, -]         [None, (4*7), 12, 12]
+9     selectedNumber 2023-10-07 14:56:30.288077        2           12    [None, 28, 12, 12]  [28, -, 12]         [None, (4*7), 12, 12]
+10         calculate 2023-10-07 14:56:30.306024      NaN    calculate  [None, None, 16, 12]           []  [None, None, ((4*7)-12), 12]
+11             Reset 2023-10-07 14:56:31.360563      NaN        Reset  [None, None, 16, 12]           []  [None, None, ((4*7)-12), 12]
+12         Trial_end 2023-10-07 14:56:31.379447      NaN    Trial_end  [None, None, 16, 12]           []  [None, None, ((4*7)-12), 12]",2023-10-07 14:56:15.540369,2023-10-07 14:56:31.404635
+1,1,1,1,"[Fraction(4, 1), Fraction(7, 1), Fraction(12, 1), Fraction(12, 1)]",0,"['12', '-', '4', '12', '-', '7']","              events                 event_time position        value                nums result_stack              expression_stack
+0        Trial_start 2023-10-07 14:56:31.436667      NaN  Trial_start      [4, 7, 12, 12]           []                [4, 7, 12, 12]
+1     selectedNumber 2023-10-07 14:56:33.143870        2           12      [4, 7, 12, 12]         [12]                [4, 7, 12, 12]
+2   selectedOperator 2023-10-07 14:56:33.761012        5            -      [4, 7, 12, 12]      [12, -]                [4, 7, 12, 12]
+3     selectedNumber 2023-10-07 14:56:34.032011        0            4      [4, 7, 12, 12]   [12, -, 4]                [4, 7, 12, 12]
+4          calculate 2023-10-07 14:56:34.049950      NaN    calculate    [8, 7, None, 12]           []         [(12-4), 7, None, 12]
+5     selectedNumber 2023-10-07 14:56:35.769059        3           12    [8, 7, None, 12]         [12]         [(12-4), 7, None, 12]
+6   selectedOperator 2023-10-07 14:56:36.712424        5            -    [8, 7, None, 12]      [12, -]         [(12-4), 7, None, 12]
+7     selectedNumber 2023-10-07 14:56:37.050251        1            7    [8, 7, None, 12]   [12, -, 7]         [(12-4), 7, None, 12]
+8          calculate 2023-10-07 14:56:37.067135      NaN    calculate  [8, 5, None, None]           []  [(12-4), (12-7), None, None]
+9              Reset 2023-10-07 14:56:38.304615      NaN        Reset  [8, 5, None, None]           []  [(12-4), (12-7), None, None]
+10         Trial_end 2023-10-07 14:56:38.323184      NaN    Trial_end  [8, 5, None, None]           []  [(12-4), (12-7), None, None]",2023-10-07 14:56:31.420718,2023-10-07 14:56:38.340295
+2,1,2,1,"[Fraction(4, 1), Fraction(7, 1), Fraction(12, 1), Fraction(12, 1)]",0,"['12', '/', '12', '7', '-', '1', '6', '*', '4']","              events                 event_time position        value                    nums result_stack                     expression_stack
+0        Trial_start 2023-10-07 14:56:38.369198      NaN  Trial_start          [4, 7, 12, 12]           []                       [4, 7, 12, 12]
+1     selectedNumber 2023-10-07 14:56:40.345023        2           12          [4, 7, 12, 12]         [12]                       [4, 7, 12, 12]
+2   selectedOperator 2023-10-07 14:56:41.704497        7            /          [4, 7, 12, 12]      [12, /]                       [4, 7, 12, 12]
+3     selectedNumber 2023-10-07 14:56:42.088557        3           12          [4, 7, 12, 12]  [12, /, 12]                       [4, 7, 12, 12]
+4          calculate 2023-10-07 14:56:42.106455      NaN    calculate         [4, 7, None, 1]           []                [4, 7, None, (12/12)]
+5     selectedNumber 2023-10-07 14:56:42.504204        3            1         [4, 7, None, 1]          [1]                [4, 7, None, (12/12)]
+6     selectedNumber 2023-10-07 14:56:43.100040        1            7         [4, 7, None, 1]          [7]                [4, 7, None, (12/12)]
+7   selectedOperator 2023-10-07 14:56:43.944969        5            -         [4, 7, None, 1]       [7, -]                [4, 7, None, (12/12)]
+8     selectedNumber 2023-10-07 14:56:44.337987        3            1         [4, 7, None, 1]    [7, -, 1]                [4, 7, None, (12/12)]
+9          calculate 2023-10-07 14:56:44.353926      NaN    calculate      [4, None, None, 6]           []         [4, None, None, (7-(12/12))]
+10    selectedNumber 2023-10-07 14:56:44.697434        3            6      [4, None, None, 6]          [6]         [4, None, None, (7-(12/12))]
+11  selectedOperator 2023-10-07 14:56:45.209285        6            *      [4, None, None, 6]       [6, *]         [4, None, None, (7-(12/12))]
+12    selectedNumber 2023-10-07 14:56:45.848401        0            4      [4, None, None, 6]    [6, *, 4]         [4, None, None, (7-(12/12))]
+13         calculate 2023-10-07 14:56:45.867582      NaN    calculate  [24, None, None, None]           []  [((7-(12/12))*4), None, None, None]
+14         Trial_end 2023-10-07 14:56:45.888521      NaN    Trial_end  [24, None, None, None]           []  [((7-(12/12))*4), None, None, None]",2023-10-07 14:56:38.353252,2023-10-07 14:56:45.908446
+3,1,3,1,"[Fraction(2, 1), Fraction(4, 1), Fraction(6, 1), Fraction(9, 1)]",0,[],"             events                 event_time position        value          nums result_stack expression_stack
+0       Trial_start 2023-10-07 14:56:45.951542      NaN  Trial_start  [2, 4, 6, 9]           []     [2, 4, 6, 9]
+1    selectedNumber 2023-10-07 14:56:50.985670        0            2  [2, 4, 6, 9]          [2]     [2, 4, 6, 9]
+2  selectedOperator 2023-10-07 14:56:51.441454        5            -  [2, 4, 6, 9]       [2, -]     [2, 4, 6, 9]",2023-10-07 14:56:45.933682,
